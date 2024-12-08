@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Module8;
 
-namespace Module8
+namespace CS3110.Module8.Group1
 {
     public class GroupNPlayer : IPlayer
     {
