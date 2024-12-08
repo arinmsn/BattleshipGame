@@ -23,7 +23,8 @@ namespace Module8
             players.Add(new GroupNPlayer("Group AI"));
 
             MultiPlayerBattleShip game = new MultiPlayerBattleShip(players);
-            game.Play(PlayMode.Pause);  // Play the game with this "play mode"
+            //game.Play(PlayMode.Pause);  // Play the game with this "play mode"
+            game.Play(PlayMode.NoDelay);  // Change to NoDelay for faster testing
         }
     }
 }

@@ -6,41 +6,63 @@ namespace CS3110.Module8.Group1
 {
     public class GroupNPlayer : IPlayer
     {
-        // Fields/Properties
         private string _name;
         private int _playerIndex;
         private int _gridSize;
         private Random _random;
         private List<Position> _previousAttacks;
-        private Dictionary<int, List<Position>> _hits;
         private bool _inTargetMode;
         private Position _lastHit;
         private List<Position> _targetQueue;
 
-        // Constructor
         public GroupNPlayer(string name)
         {
             _name = name;
             _random = new Random();
             _previousAttacks = new List<Position>();
-            _hits = new Dictionary<int, List<Position>>();
             _targetQueue = new List<Position>();
         }
 
-        // Interface Properties
         public string Name => _name;
         public int Index => _playerIndex;
 
-        // Interface Methods - Pseudocode for now
         public void StartNewGame(int playerIndex, int gridSize, Ships ships)
         {
-            // Store player index and grid size
-            // Reset all tracking lists
-            // Place ships on grid:
-            //   - Loop through each ship
-            //   - Find valid position
-            //   - Set ship position
+            _playerIndex = playerIndex;
+            _gridSize = gridSize;
+            _previousAttacks.Clear();
+            _inTargetMode = false;
+            _lastHit = null;
+            _targetQueue.Clear();
+
+            int currentRow = 0;
+            foreach (var ship in ships._ships)
+            {
+                try
+                {
+                    ship.Place(new Position(0, currentRow), Direction.Horizontal);
+                    currentRow++;
+                }
+                catch
+                {
+                    currentRow++;
+                }
+            }
         }
+
+        // Simplistic working GetAttackPosition()
+        /*
+        public Position GetAttackPosition()
+        {
+            Position pos;
+            do
+            {
+                pos = new Position(_random.Next(_gridSize), _random.Next(_gridSize));
+            } while (_previousAttacks.Contains(pos));
+            _previousAttacks.Add(pos);
+            return pos;
+        }
+        */
 
         public void SetAttackResults(List<AttackResult> results)
         {
@@ -53,7 +75,6 @@ namespace CS3110.Module8.Group1
                 {
                     _inTargetMode = true;
                     _lastHit = result.Position;
-
                     AddAdjacentPositions(result.Position);
                 }
                 else if (result.ResultType == AttackResultType.Sank)
@@ -63,8 +84,8 @@ namespace CS3110.Module8.Group1
                 }
             }
         }
-        // GetAttackPosition needs to be divided into these components:
-        // 1. Probability calculation
+
+        // Probability calculation step
         private Dictionary<Position, double> CalculateShipProbabilities()
         {
             // TODO: Calculate probability for each square
@@ -72,50 +93,68 @@ namespace CS3110.Module8.Group1
             return new Dictionary<Position, double>();
         }
 
-        // 2. Square selection based on probabilities
+        // Square selection step
         private Position SelectSquareBasedOnProbability(Dictionary<Position, double> probabilities)
         {
             // TODO: Select square based on probability map
-            // For now, return random valid position to avoid crashing
-            return GetRandomPosition();
+            // For now, just do random selection
+            Position pos;
+            do
+            {
+                pos = new Position(_random.Next(_gridSize), _random.Next(_gridSize));
+            } while (_previousAttacks.Contains(pos));
+            return pos;
         }
 
-        // 3. Mode-based selection (search vs target mode)
+        // We can also modify GetAttackPosition to use our targeting mode logic
         public Position GetAttackPosition()
         {
-            // For now, just return random position to avoid crashing
-            return GetRandomPosition();
-        }
+            Position pos;
 
-        // Helper Methods
-        private bool IsValidPosition(Position pos)
-        {
-            return pos.X >= 0 && pos.X < _gridSize && pos.Y >= 0 && pos.Y < _gridSize;
-        }
+            // If we're in target mode and have positions to try
+            if (_inTargetMode && _targetQueue.Count > 0)
+            {
+                pos = _targetQueue[0];
+                _targetQueue.RemoveAt(0);
+            }
+            else
+            {
+                // Use probability-based selection (currently just returns random)
+                var probabilities = CalculateShipProbabilities();
+                pos = SelectSquareBasedOnProbability(probabilities);
+            }
 
-        private bool HasAttacked(Position pos)
-        {
-            return _previousAttacks.Contains(pos);
+            // Add to previous attacks and return
+            if (!_previousAttacks.Contains(pos))
+            {
+                _previousAttacks.Add(pos);
+            }
+            return pos;
         }
 
         private void AddAdjacentPositions(Position pos)
         {
-            // Add valid adjacent positions to target queue
+            var adjacentPositions = new List<Position>
+            {
+                new Position(pos.X - 1, pos.Y),
+                new Position(pos.X + 1, pos.Y),
+                new Position(pos.X, pos.Y - 1),
+                new Position(pos.X, pos.Y + 1)
+            };
+
+            foreach (var adjPos in adjacentPositions)
+            {
+                if (IsValidPosition(adjPos) && !_previousAttacks.Contains(adjPos))
+                {
+                    _targetQueue.Add(adjPos);
+                }
+            }
         }
 
-        private Position GetRandomPosition()
+        private bool IsValidPosition(Position pos)
         {
-            Position pos;
-            do
-            {
-                pos = new Position
-                (
-                    _random.Next(_gridSize),
-                    _random.Next(_gridSize)
-                );
-            } while (_previousAttacks.Contains(pos));
-            return pos;
+            return pos.X >= 0 && pos.X < _gridSize &&
+                   pos.Y >= 0 && pos.Y < _gridSize;
         }
     }
-
 }
