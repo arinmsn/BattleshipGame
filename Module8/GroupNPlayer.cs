@@ -44,11 +44,24 @@ namespace CS3110.Module8.Group1
 
         public void SetAttackResults(List<AttackResult> results)
         {
-            // For each result:
-            //   - Skip if our grid
-            //   - Track hits/misses
-            //   - Update target mode if needed
-            //   - Update targeting queue
+            foreach (var result in results)
+            {
+                if (result.PlayerIndex == _playerIndex)
+                    continue;
+
+                if (result.ResultType == AttackResultType.Hit)
+                {
+                    _inTargetMode = true;
+                    _lastHit = result.Position;
+
+                    AddAdjacentPositions(result.Position);
+                }
+                else if (result.ResultType == AttackResultType.Sank)
+                {
+                    _targetQueue.Clear();
+                    _inTargetMode = false;
+                }
+            }
         }
         // GetAttackPosition needs to be divided into these components:
         // 1. Probability calculation
@@ -77,12 +90,12 @@ namespace CS3110.Module8.Group1
         // Helper Methods
         private bool IsValidPosition(Position pos)
         {
-            // Check if position is within grid
+            return pos.X >= 0 && pos.X < _gridSize && pos.Y >= 0 && pos.Y < _gridSize;
         }
 
         private bool HasAttacked(Position pos)
         {
-            // Check if position was previously attacked
+            return _previousAttacks.Contains(pos);
         }
 
         private void AddAdjacentPositions(Position pos)
