@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Module8</RootNamespace>
     <AssemblyName>Module8</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,6 +47,7 @@
     <Compile Include="DumbPlayer\DumbPlayer.cs" />
     <Compile Include="Grid.cs" />
     <Compile Include="GridEntry.cs" />
+    <Compile Include="GroupNPlayer.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="MultiPlayerBattleShip.cs" />
     <Compile Include="PlayMode.cs" />
