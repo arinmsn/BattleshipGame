@@ -42,16 +42,6 @@ namespace CS3110.Module8.Group1
             //   - Set ship position
         }
 
-        public Position GetAttackPosition()
-        {
-            // If in target mode:
-            //   - Use targeting queue
-            // Else:
-            //   - Get position using search strategy
-            // Add to previous attacks
-            // Return position
-        }
-
         public void SetAttackResults(List<AttackResult> results)
         {
             // For each result:
@@ -59,6 +49,29 @@ namespace CS3110.Module8.Group1
             //   - Track hits/misses
             //   - Update target mode if needed
             //   - Update targeting queue
+        }
+        // GetAttackPosition needs to be divided into these components:
+        // 1. Probability calculation
+        private Dictionary<Position, double> CalculateShipProbabilities()
+        {
+            // TODO: Calculate probability for each square
+            // Returns dictionary mapping positions to probabilities
+            return new Dictionary<Position, double>();
+        }
+
+        // 2. Square selection based on probabilities
+        private Position SelectSquareBasedOnProbability(Dictionary<Position, double> probabilities)
+        {
+            // TODO: Select square based on probability map
+            // For now, return random valid position to avoid crashing
+            return GetRandomPosition();
+        }
+
+        // 3. Mode-based selection (search vs target mode)
+        public Position GetAttackPosition()
+        {
+            // For now, just return random position to avoid crashing
+            return GetRandomPosition();
         }
 
         // Helper Methods
@@ -75,6 +88,20 @@ namespace CS3110.Module8.Group1
         private void AddAdjacentPositions(Position pos)
         {
             // Add valid adjacent positions to target queue
+        }
+
+        private Position GetRandomPosition()
+        {
+            Position pos;
+            do
+            {
+                pos = new Position
+                (
+                    _random.Next(_gridSize),
+                    _random.Next(_gridSize)
+                );
+            } while (_previousAttacks.Contains(pos));
+            return pos;
         }
     }
 
