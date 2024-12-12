@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Module8
 {
     public class Ships
     {
         public readonly List<Ship> _ships = new List<Ship>();
-
+        public List<Ship> GetRemainingShips()
+        {
+            // Implement logic to filter out sunk ships
+            return _ships.Where(ship => !ship.Sunk).ToList();
+        }
         public void Clear()
         {
             _ships.Clear();

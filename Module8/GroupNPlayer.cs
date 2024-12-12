@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Module8;
 
 namespace CS3110.Module8.Group1
@@ -14,6 +15,7 @@ namespace CS3110.Module8.Group1
         private bool _inTargetMode;
         private Position _lastHit;
         private List<Position> _targetQueue;
+        private Ships _ships;
 
         public GroupNPlayer(string name)
         {
@@ -30,6 +32,7 @@ namespace CS3110.Module8.Group1
         {
             _playerIndex = playerIndex;
             _gridSize = gridSize;
+            _ships = ships;
             _previousAttacks.Clear();
             _inTargetMode = false;
             _lastHit = null;
@@ -88,10 +91,102 @@ namespace CS3110.Module8.Group1
         // Probability calculation step
         private Dictionary<Position, double> CalculateShipProbabilities()
         {
-            // TODO: Calculate probability for each square
-            // Returns dictionary mapping positions to probabilities
-            return new Dictionary<Position, double>();
+            var probabilities = new Dictionary<Position, double>();
+
+            // Initialize probabilities for each grid position
+            for (int x = 0; x < _gridSize; x++)
+            {
+                for (int y = 0; y < _gridSize; y++)
+                {
+                    var pos = new Position(x, y);
+                    if (!_previousAttacks.Contains(pos))
+                    {
+                        probabilities[pos] = 0.0;
+                    }
+                }
+            }
+
+            // Analyze each ship's potential placement
+            foreach (var ship in _ships.GetRemainingShips())
+            {
+                int shipLength = ship.Size;
+
+                // Horizontal placement
+                for (int x = 0; x <= _gridSize - shipLength; x++)
+                {
+                    bool canPlace = true;
+                    for (int offset = 0; offset < shipLength; offset++)
+                    {
+                        var pos = new Position(x + offset, 0);
+                        if (_previousAttacks.Contains(pos))
+                        {
+                            canPlace = false;
+                            break;
+                        }
+                    }
+
+                    if (canPlace)
+                    {
+                        for (int y = 0; y < _gridSize; y++)
+                        {
+                            for (int offset = 0; offset < shipLength; offset++)
+                            {
+                                var pos = new Position(x + offset, y);
+                                probabilities[pos] += 1.0;
+                            }
+                        }
+                    }
+                }
+
+                // Vertical placement
+                for (int x = 0; x < _gridSize; x++)
+                {
+                    for (int y = 0; y <= _gridSize - shipLength; y++)
+                    {
+                        bool canPlace = true;
+                        var positions = new List<Position>();
+
+                        for (int offset = 0; offset < shipLength; offset++)
+                        {
+                            var pos = new Position(x, y + offset);
+                            if (_previousAttacks.Contains(pos))
+                            {
+                                canPlace = false;
+                                break;
+                            }
+                            positions.Add(pos);
+                        }
+
+                        if (canPlace)
+                        {
+                            foreach (var pos in positions)
+                            {
+                                if (probabilities.ContainsKey(pos))
+                                {
+                                    probabilities[pos] += 1.0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Other potential placement strategies (e.g., diagonal)
+                // ...
+            }
+
+            // Normalize probabilities
+            double maxProbability = probabilities.Values.Max();
+            if (maxProbability > 0)
+            {
+                foreach (var key in probabilities.Keys.ToList())
+                {
+                    probabilities[key] /= maxProbability;
+                }
+            }
+
+            return probabilities;
         }
+
 
         // Square selection step
         private Position SelectSquareBasedOnProbability(Dictionary<Position, double> probabilities)

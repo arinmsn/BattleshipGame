@@ -6,13 +6,13 @@ namespace Module8
 {
     public abstract class Ship
     {
-
         private Position[] _positions;
         public readonly int Length;
         public readonly ConsoleColor Color;
         public readonly ShipTypes ShipType;
         private static readonly char[] Characters =  {'?', 'P', 'S', 'D', 'A', 'B'};
         public virtual bool IsBattleShip => false;
+        public int Size { get; private set; }
 
         protected Ship(int length, ConsoleColor color, ShipTypes shipType)
         {
