@@ -1,12 +1,169 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Perce\\Downloads\\BattleshipGame\\",
-  "Documents": [],
+  "WorkspaceRootPath": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|f:\\backup--dont delete--1.57 tb\\documents\\baker college\\fall 2024 - august to dec\\session 2 - oct 21 - cs3110-c1 - c#\\week 7\\battleshipgame\\module8\\groupnplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|solutionrelative:module8\\groupnplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|f:\\backup--dont delete--1.57 tb\\documents\\baker college\\fall 2024 - august to dec\\session 2 - oct 21 - cs3110-c1 - c#\\week 7\\battleshipgame\\module8\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|solutionrelative:module8\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|f:\\backup--dont delete--1.57 tb\\documents\\baker college\\fall 2024 - august to dec\\session 2 - oct 21 - cs3110-c1 - c#\\week 7\\battleshipgame\\module8\\multiplayerbattleship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|solutionrelative:module8\\multiplayerbattleship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|f:\\backup--dont delete--1.57 tb\\documents\\baker college\\fall 2024 - august to dec\\session 2 - oct 21 - cs3110-c1 - c#\\week 7\\battleshipgame\\module8\\randomplayer\\randomplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|solutionrelative:module8\\randomplayer\\randomplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|f:\\backup--dont delete--1.57 tb\\documents\\baker college\\fall 2024 - august to dec\\session 2 - oct 21 - cs3110-c1 - c#\\week 7\\battleshipgame\\module8\\ships\\ships.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|solutionrelative:module8\\ships\\ships.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|f:\\backup--dont delete--1.57 tb\\documents\\baker college\\fall 2024 - august to dec\\session 2 - oct 21 - cs3110-c1 - c#\\week 7\\battleshipgame\\module8\\ships\\ship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|solutionrelative:module8\\ships\\ship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|f:\\backup--dont delete--1.57 tb\\documents\\baker college\\fall 2024 - august to dec\\session 2 - oct 21 - cs3110-c1 - c#\\week 7\\battleshipgame\\module8\\ships\\position.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BD0C1A8-2A91-4015-9F25-B52DC7173CFC}|Module8\\Module8.csproj|solutionrelative:module8\\ships\\position.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MultiPlayerBattleShip.cs",
+              "DocumentMoniker": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\MultiPlayerBattleShip.cs",
+              "RelativeDocumentMoniker": "Module8\\MultiPlayerBattleShip.cs",
+              "ToolTip": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\MultiPlayerBattleShip.cs",
+              "RelativeToolTip": "Module8\\MultiPlayerBattleShip.cs",
+              "ViewState": "AgIAALAAAAAAAAAAAAAwwMUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T02:30:48.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\Program.cs",
+              "RelativeDocumentMoniker": "Module8\\Program.cs",
+              "ToolTip": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\Program.cs",
+              "RelativeToolTip": "Module8\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAswAoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T02:04:16.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RandomPlayer.cs",
+              "DocumentMoniker": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\RandomPlayer\\RandomPlayer.cs",
+              "RelativeDocumentMoniker": "Module8\\RandomPlayer\\RandomPlayer.cs",
+              "ToolTip": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\RandomPlayer\\RandomPlayer.cs",
+              "RelativeToolTip": "Module8\\RandomPlayer\\RandomPlayer.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAwwCIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T01:37:19.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Ship.cs",
+              "DocumentMoniker": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\Ships\\Ship.cs",
+              "RelativeDocumentMoniker": "Module8\\Ships\\Ship.cs",
+              "ToolTip": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\Ships\\Ship.cs",
+              "RelativeToolTip": "Module8\\Ships\\Ship.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T00:05:53.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Position.cs",
+              "DocumentMoniker": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\Ships\\Position.cs",
+              "RelativeDocumentMoniker": "Module8\\Ships\\Position.cs",
+              "ToolTip": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\Ships\\Position.cs",
+              "RelativeToolTip": "Module8\\Ships\\Position.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T00:00:01.855Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Ships.cs",
+              "DocumentMoniker": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\Ships\\Ships.cs",
+              "RelativeDocumentMoniker": "Module8\\Ships\\Ships.cs",
+              "ToolTip": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\Ships\\Ships.cs",
+              "RelativeToolTip": "Module8\\Ships\\Ships.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T23:59:41.366Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GroupNPlayer.cs",
+              "DocumentMoniker": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\GroupNPlayer.cs",
+              "RelativeDocumentMoniker": "Module8\\GroupNPlayer.cs",
+              "ToolTip": "F:\\BACKUP--DONT DELETE--1.57 TB\\Documents\\Baker College\\Fall 2024 - August to Dec\\Session 2 - Oct 21 - CS3110-C1 - C#\\Week 7\\BattleshipGame\\Module8\\GroupNPlayer.cs",
+              "RelativeToolTip": "Module8\\GroupNPlayer.cs",
+              "ViewState": "AgIAAKsAAAAAAAAAAAAuwNYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T02:54:08.42Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 136,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

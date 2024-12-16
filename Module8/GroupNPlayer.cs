@@ -43,29 +43,22 @@ namespace CS3110.Module8.Group1
             {
                 try
                 {
+                    // Ensure we don't exceed grid size
+                    if (currentRow >= _gridSize)
+                        currentRow = 0;
+
                     ship.Place(new Position(0, currentRow), Direction.Horizontal);
                     currentRow++;
                 }
                 catch
                 {
-                    currentRow++;
+                    if (currentRow >= _gridSize)
+                        currentRow = 0;
+                    else
+                        currentRow++;
                 }
             }
         }
-
-        // Simplistic working GetAttackPosition()
-        /*
-        public Position GetAttackPosition()
-        {
-            Position pos;
-            do
-            {
-                pos = new Position(_random.Next(_gridSize), _random.Next(_gridSize));
-            } while (_previousAttacks.Contains(pos));
-            _previousAttacks.Add(pos);
-            return pos;
-        }
-        */
 
         public void SetAttackResults(List<AttackResult> results)
         {
@@ -114,25 +107,30 @@ namespace CS3110.Module8.Group1
                 // Horizontal placement
                 for (int x = 0; x <= _gridSize - shipLength; x++)
                 {
-                    bool canPlace = true;
-                    for (int offset = 0; offset < shipLength; offset++)
+                    for (int y = 0; y < _gridSize; y++)
                     {
-                        var pos = new Position(x + offset, 0);
-                        if (_previousAttacks.Contains(pos))
-                        {
-                            canPlace = false;
-                            break;
-                        }
-                    }
+                        bool canPlace = true;
+                        var positions = new List<Position>();
 
-                    if (canPlace)
-                    {
-                        for (int y = 0; y < _gridSize; y++)
+                        for (int offset = 0; offset < shipLength; offset++)
                         {
-                            for (int offset = 0; offset < shipLength; offset++)
+                            var pos = new Position(x + offset, y);
+                            if (_previousAttacks.Contains(pos))
                             {
-                                var pos = new Position(x + offset, y);
-                                probabilities[pos] += 1.0;
+                                canPlace = false;
+                                break;
+                            }
+                            positions.Add(pos);
+                        }
+
+                        if (canPlace)
+                        {
+                            foreach (var pos in positions)
+                            {
+                                if (probabilities.ContainsKey(pos))
+                                {
+                                    probabilities[pos] += 1.0;
+                                }
                             }
                         }
                     }
@@ -169,9 +167,6 @@ namespace CS3110.Module8.Group1
                         }
                     }
                 }
-
-                // Other potential placement strategies (e.g., diagonal)
-                // ...
             }
 
             // Normalize probabilities
@@ -191,14 +186,61 @@ namespace CS3110.Module8.Group1
         // Square selection step
         private Position SelectSquareBasedOnProbability(Dictionary<Position, double> probabilities)
         {
-            // TODO: Select square based on probability map
-            // For now, just do random selection
-            Position pos;
-            do
+            // Use systematic scanning for first moves 
+            if (_previousAttacks.Count < _gridSize * 3)  // Increased from 2 to 3 for more systematic early scanning
             {
-                pos = new Position(_random.Next(_gridSize), _random.Next(_gridSize));
-            } while (_previousAttacks.Contains(pos));
-            return pos;
+                // Modified to prefer corners and edges first
+                for (int y = 0; y < _gridSize; y++)
+                {
+                    for (int x = 0; x < _gridSize; x++)
+                    {
+                        var pos = new Position(x, y);
+                        // Check corners and edges first
+                        bool isCornerOrEdge = x == 0 || x == _gridSize - 1 || y == 0 || y == _gridSize - 1;
+                        if (!_previousAttacks.Contains(pos) && isCornerOrEdge)
+                            return pos;
+                    }
+                }
+                // Then check remaining positions
+                for (int y = 0; y < _gridSize; y++)
+                {
+                    for (int x = 0; x < _gridSize; x++)
+                    {
+                        var pos = new Position(x, y);
+                        if (!_previousAttacks.Contains(pos))
+                            return pos;
+                    }
+                }
+            }
+
+            // Then use probability-based targeting for later moves
+            var topPositions = probabilities
+                .OrderByDescending(kvp => kvp.Value)
+                .Take(4)  // Increased from 3 to 4 for more variety
+                .ToList();
+
+            if (!topPositions.Any())
+            {
+                Position pos;
+                do
+                {
+                    pos = new Position(_random.Next(_gridSize), _random.Next(_gridSize));
+                } while (_previousAttacks.Contains(pos));
+                return pos;
+            }
+
+            // Modified probability distribution
+            double randomValue = _random.NextDouble();
+            if (randomValue < 0.7 || topPositions.Count == 1)  // Reduced from 0.8 to 0.7
+                return topPositions[0].Key;
+            else if (randomValue < 0.9 && topPositions.Count >= 2)  // Increased middle range
+                return topPositions[1].Key;
+            else if (randomValue < 0.95 && topPositions.Count >= 3)
+                return topPositions[2].Key;
+            else if (topPositions.Count >= 4)
+                return topPositions[3].Key;
+
+            return topPositions[0].Key;
         }
 
         // We can also modify GetAttackPosition to use our targeting mode logic
@@ -229,19 +271,43 @@ namespace CS3110.Module8.Group1
 
         private void AddAdjacentPositions(Position pos)
         {
-            var adjacentPositions = new List<Position>
-            {
-                new Position(pos.X - 1, pos.Y),
-                new Position(pos.X + 1, pos.Y),
-                new Position(pos.X, pos.Y - 1),
-                new Position(pos.X, pos.Y + 1)
-            };
+            // Clear existing queue to focus on most recent hit
+            _targetQueue.Clear();
 
-            foreach (var adjPos in adjacentPositions)
+            // If we have a previous hit, prioritize positions in that direction
+            if (_lastHit != null && _lastHit != pos)
             {
-                if (IsValidPosition(adjPos) && !_previousAttacks.Contains(adjPos))
+                int dx = pos.X - _lastHit.X;
+                int dy = pos.Y - _lastHit.Y;
+
+                // Continue in the same direction
+                var nextPos = new Position(pos.X + dx, pos.Y + dy);
+                if (IsValidPosition(nextPos) && !_previousAttacks.Contains(nextPos))
+                    _targetQueue.Add(nextPos);
+
+                // Try opposite direction from first hit
+                var oppositePos = new Position(_lastHit.X - dx, _lastHit.Y - dy);
+                if (IsValidPosition(oppositePos) && !_previousAttacks.Contains(oppositePos))
+                    _targetQueue.Add(oppositePos);
+            }
+
+            // Add standard adjacent positions if queue is empty
+            if (_targetQueue.Count == 0)
+            {
+                var adjacentPositions = new List<Position>
+        {
+            new Position(pos.X - 1, pos.Y),
+            new Position(pos.X + 1, pos.Y),
+            new Position(pos.X, pos.Y - 1),
+            new Position(pos.X, pos.Y + 1)
+        };
+
+                foreach (var adjPos in adjacentPositions)
                 {
-                    _targetQueue.Add(adjPos);
+                    if (IsValidPosition(adjPos) && !_previousAttacks.Contains(adjPos))
+                    {
+                        _targetQueue.Add(adjPos);
+                    }
                 }
             }
         }

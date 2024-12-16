@@ -1,0 +1,7 @@
+F:\BACKUP--DONT DELETE--1.57 TB\Documents\Baker College\Fall 2024 - August to Dec\Session 2 - Oct 21 - CS3110-C1 - C#\Week 7\BattleshipGame\Module8\bin\Debug\Module8.exe.config
+F:\BACKUP--DONT DELETE--1.57 TB\Documents\Baker College\Fall 2024 - August to Dec\Session 2 - Oct 21 - CS3110-C1 - C#\Week 7\BattleshipGame\Module8\bin\Debug\Module8.exe
+F:\BACKUP--DONT DELETE--1.57 TB\Documents\Baker College\Fall 2024 - August to Dec\Session 2 - Oct 21 - CS3110-C1 - C#\Week 7\BattleshipGame\Module8\bin\Debug\Module8.pdb
+F:\BACKUP--DONT DELETE--1.57 TB\Documents\Baker College\Fall 2024 - August to Dec\Session 2 - Oct 21 - CS3110-C1 - C#\Week 7\BattleshipGame\Module8\obj\Debug\Module8.csproj.AssemblyReference.cache
+F:\BACKUP--DONT DELETE--1.57 TB\Documents\Baker College\Fall 2024 - August to Dec\Session 2 - Oct 21 - CS3110-C1 - C#\Week 7\BattleshipGame\Module8\obj\Debug\Module8.csproj.CoreCompileInputs.cache
+F:\BACKUP--DONT DELETE--1.57 TB\Documents\Baker College\Fall 2024 - August to Dec\Session 2 - Oct 21 - CS3110-C1 - C#\Week 7\BattleshipGame\Module8\obj\Debug\Module8.exe
+F:\BACKUP--DONT DELETE--1.57 TB\Documents\Baker College\Fall 2024 - August to Dec\Session 2 - Oct 21 - CS3110-C1 - C#\Week 7\BattleshipGame\Module8\obj\Debug\Module8.pdb
